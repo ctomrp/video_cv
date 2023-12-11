@@ -2,18 +2,19 @@ function startAudio() {
     var audio = document.getElementById('audio-background');
     audio.muted = false;
     audio.play().catch(error => {
-        console.error('Error al reproducir audio:', error);
+      console.error('Error al reproducir audio:', error);
     });
-}
+  }
 
-function getRandomNumber(min, max) {
+  function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
+  }
 
-function showHiredText() {
+  function showHiredText(words) {
     var hiredText = document.createElement('div');
     hiredText.className = 'random-text';
-    hiredText.textContent = 'Hired! ;)';
+    var randomWord = words[getRandomNumber(0, words.length - 1)];
+    hiredText.textContent = randomWord;
 
     var screenWidth = window.innerWidth;
     var screenHeight = window.innerHeight;
@@ -27,12 +28,17 @@ function showHiredText() {
     document.body.appendChild(hiredText);
 
     setTimeout(function () {
-        hiredText.style.display = 'block';
-        setTimeout(function () {
-            hiredText.style.display = 'none';
-            document.body.removeChild(hiredText);
-        }, 490);
+      hiredText.style.display = 'block';
+      setTimeout(function () {
+        hiredText.style.display = 'none';
+        document.body.removeChild(hiredText);
+      }, 490);
     }, 0);
-}
+  }
 
-setInterval(showHiredText, 490);
+  var wordList = ['Hired! ;)', 'Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual'];
+
+  startAudio();
+  setInterval(function() {
+    showHiredText(wordList);
+  }, 490);
