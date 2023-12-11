@@ -4,6 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 #video-container {
@@ -25,25 +26,38 @@ body {
     left: 0;
 }
 
+.random-text {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    display: none;
+    font-size: 7rem;
+    font-weight: bold;
+    color: #bdba01;
+    -webkit-text-stroke: #fff 3px;
+    animation: pulseEffect 0.49s infinite;
+}
+
 #start-button {
     background: linear-gradient(45deg, #6978d1, #01a4bd, #19be63, #bdba01, #bd3601);
     background-size: 200% 100%;
     animation: bg_animated 1.2s ease-in-out infinite alternate,
-        moveButton 0.49s infinite;
+    pulseEffect 0.49s infinite;
     position: relative;
     font-size: 15px;
     top: 35%;
-    left: 30%;
+    left: 0%;
     z-index: 1000;
     padding: 10px;
     background-color: #007BFF;
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    border: none;
+    border: 5px solid orangered;
     border-radius: 20px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);;
 }
 
 #start-button:hover {
@@ -65,7 +79,7 @@ body {
     }
 }
 
-@keyframes moveButton {
+@keyframes pulseEffect {
 
     0%,
     100% {
