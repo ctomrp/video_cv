@@ -54,3 +54,8 @@ function getRandomNumber(min, max) {
   setInterval(function () {
     currentIndex = showHiredText(wordList, currentIndex);
   }, 490);
+
+  window.onload = function () {
+    // Oculta el loader y muestra la página
+    document.getElementById('loader').classList.add('hide');
+}
