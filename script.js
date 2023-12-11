@@ -1,3 +1,4 @@
+//party time
 function startAudio() {
     var audio = document.getElementById('audio-background');
     audio.muted = false;
@@ -6,6 +7,7 @@ function startAudio() {
     });
 }
 
+//lights
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -46,10 +48,8 @@ function showHiredText(words, currentIndex) {
     return currentIndex + 1;
 }
 
-var wordList = ['Hired! ;)', 'Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual'];
+var wordList = ['Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual', 'Hired! ;)'];
 
-startAudio();
-var currentIndex = 0;
 setInterval(function () {
     currentIndex = showHiredText(wordList, currentIndex);
 }, 490);
