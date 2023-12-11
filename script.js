@@ -7,6 +7,11 @@ function startAudio() {
     });
 }
 
+var video = document.getElementById('video-background');
+video.addEventListener('loadeddata', function () {
+    document.getElementById('loader').classList.add('hide');
+});
+
 //lights
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -56,6 +61,5 @@ function getRandomNumber(min, max) {
   }, 490);
 
   window.onload = function () {
-    // Oculta el loader y muestra la página
     document.getElementById('loader').classList.add('hide');
 }

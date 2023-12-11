@@ -20,10 +20,9 @@ body {
     z-index: 10000;
 }
 
-#loader svg {
+#loader img {
     width: 100px;
     height: 100px;
-    fill: white;
 }
 
 #loader.hide {
