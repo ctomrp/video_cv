@@ -48,7 +48,7 @@ function getRandomNumber(min, max) {
     return currentIndex + 1;
   }
 
-  var wordList = ['Hired', 'Awesome', 'Success', 'Innovation', 'Teamwork'];
+  var wordList = ['Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual', 'Hired! ;)'];
 
   var currentIndex = 0;
   setInterval(function () {
