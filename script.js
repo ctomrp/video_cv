@@ -23,14 +23,12 @@ function getRandomNumber(min, max) {
     var screenWidth = window.innerWidth;
     var screenHeight = window.innerHeight;
 
-    // Tamaño del texto
     var textWidth = 7 * currentWord.length;
     var textHeight = 7;
 
     var randomX = getRandomNumber(0, screenWidth - textWidth);
     var randomY = getRandomNumber(0, screenHeight - textHeight);
 
-    // Verificar y ajustar la posición para asegurar que esté dentro del área del DOM
     randomX = Math.max(0, Math.min(randomX, screenWidth - textWidth));
     randomY = Math.max(0, Math.min(randomY, screenHeight - textHeight));
 
