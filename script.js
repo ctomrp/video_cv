@@ -1,65 +1,72 @@
 //party time
 function startAudio() {
-    var audio = document.getElementById('audio-background');
-    audio.muted = false;
-    audio.play().catch(error => {
-        console.error('Error al reproducir audio:', error);
-    });
+  var audio = document.getElementById('audio-background');
+  audio.currentTime = 0;
+  audio.play().catch(error => {
+    console.error('Error al reproducir audio:', error);
+  });
+
+  var video = document.getElementById('video-background');
+  video.currentTime = 0;
+  video.play().catch(error => {
+    console.error('Error al reproducir video:', error);
+  });
 }
+
 
 var video = document.getElementById('video-background');
 video.addEventListener('loadeddata', function () {
-    document.getElementById('loader').classList.add('hide');
+  document.getElementById('loader').classList.add('hide');
 });
 
 //lights
 function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-  function showHiredText(words, currentIndex) {
-    currentIndex = currentIndex % words.length;
+function showHiredText(words, currentIndex) {
+  currentIndex = currentIndex % words.length;
 
-    var hiredText = document.createElement('div');
-    hiredText.className = 'random-text';
-    var currentWord = words[currentIndex];
-    hiredText.textContent = currentWord;
+  var hiredText = document.createElement('div');
+  hiredText.className = 'random-text';
+  var currentWord = words[currentIndex];
+  hiredText.textContent = currentWord;
 
-    var screenWidth = window.innerWidth;
-    var screenHeight = window.innerHeight;
+  var screenWidth = window.innerWidth;
+  var screenHeight = window.innerHeight;
 
-    var textWidth = 7 * currentWord.length;
-    var textHeight = 7;
+  var textWidth = 7 * currentWord.length;
+  var textHeight = 7;
 
-    var randomX = getRandomNumber(0, screenWidth - textWidth);
-    var randomY = getRandomNumber(0, screenHeight - textHeight);
+  var randomX = getRandomNumber(0, screenWidth - textWidth);
+  var randomY = getRandomNumber(0, screenHeight - textHeight);
 
-    randomX = Math.max(0, Math.min(randomX, screenWidth - textWidth));
-    randomY = Math.max(0, Math.min(randomY, screenHeight - textHeight));
+  randomX = Math.max(0, Math.min(randomX, screenWidth - textWidth));
+  randomY = Math.max(0, Math.min(randomY, screenHeight - textHeight));
 
-    hiredText.style.left = randomX + 'px';
-    hiredText.style.top = randomY + 'px';
+  hiredText.style.left = randomX + 'px';
+  hiredText.style.top = randomY + 'px';
 
-    document.body.appendChild(hiredText);
+  document.body.appendChild(hiredText);
 
+  setTimeout(function () {
+    hiredText.style.display = 'block';
     setTimeout(function () {
-      hiredText.style.display = 'block';
-      setTimeout(function () {
-        hiredText.style.display = 'none';
-        document.body.removeChild(hiredText);
-      }, 490);
-    }, 0);
+      hiredText.style.display = 'none';
+      document.body.removeChild(hiredText);
+    }, 490);
+  }, 0);
 
-    return currentIndex + 1;
-  }
+  return currentIndex + 1;
+}
 
-  var wordList = ['Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual', 'Hired! ;)'];
+var wordList = ['Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual', 'Hired! ;)'];
 
-  var currentIndex = 0;
-  setInterval(function () {
-    currentIndex = showHiredText(wordList, currentIndex);
-  }, 490);
+var currentIndex = 0;
+setInterval(function () {
+  currentIndex = showHiredText(wordList, currentIndex);
+}, 490);
 
-  window.onload = function () {
-    document.getElementById('loader').classList.add('hide');
+window.onload = function () {
+  document.getElementById('loader').classList.add('hide');
 }
