@@ -1,18 +1,7 @@
-//party time
+var currentIndex = 0;
 var video = document.getElementById('video-background');
+var wordList = ['Creative', 'Proactive', 'Self-taught', 'Teamwork', 'Punctual', 'Dedicated', 'Responsible', 'Best Practices', 'Hired! ;)'];
 
-function startAudio() {
-  video.muted = false;
-  video.play().catch(error => {
-    console.error('Error al reproducir audio:', error);
-  });
-}
-
-video.addEventListener('loadeddata', function () {
-  document.getElementById('loader').classList.add('hide');
-});
-
-//lights
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -31,11 +20,14 @@ function showHiredText(words, currentIndex) {
   var textWidth = 7 * currentWord.length;
   var textHeight = 7;
 
-  var randomX = getRandomNumber(0, screenWidth - textWidth);
-  var randomY = getRandomNumber(0, screenHeight - textHeight);
+  var maxX = screenWidth - textWidth;
+  var maxY = screenHeight - textHeight;
 
-  randomX = Math.max(0, Math.min(randomX, screenWidth - textWidth));
-  randomY = Math.max(0, Math.min(randomY, screenHeight - textHeight));
+  var randomX = getRandomNumber(0, maxX);
+  var randomY = getRandomNumber(0, maxY);
+
+  randomX = Math.max(0, Math.min(randomX, maxX));
+  randomY = Math.max(0, Math.min(randomY, maxY));
 
   hiredText.style.left = randomX + 'px';
   hiredText.style.top = randomY + 'px';
@@ -53,12 +45,20 @@ function showHiredText(words, currentIndex) {
   return currentIndex + 1;
 }
 
-var wordList = ['Awesome', 'Success', 'Innovation', 'Teamwork', 'Punctual', 'Hired! ;)'];
+function startAudio() {
+  video.muted = false;
+  setInterval(function () {
+    currentIndex = showHiredText(wordList, currentIndex);
+  }, 490);
+  document.getElementById('start-button').style.display = 'none';
+  video.play().catch(error => {
+    console.error('Error al reproducir audio:', error);
+  });
+}
 
-var currentIndex = 0;
-setInterval(function () {
-  currentIndex = showHiredText(wordList, currentIndex);
-}, 490);
+video.addEventListener('loadeddata', function () {
+  document.getElementById('loader').classList.add('hide');
+});
 
 window.onload = function () {
   document.getElementById('loader').classList.add('hide');
